@@ -1,0 +1,3 @@
+#!/bin/bash
+export CFILE="0" | gcc -E $CFILE
+
