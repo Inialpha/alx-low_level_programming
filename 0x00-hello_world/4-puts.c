@@ -1,7 +1,9 @@
 #include <stdio.h>
 
 /**
- * print a a string and a new line
+ *nmain - Entry point
+ *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
