@@ -9,7 +9,7 @@
 int main(void)
 {
 	fputs(stderr, "and that piece of art is usefu
-	l\" - Do
+	l" - Do
 	ra Korpar, 2015-10-19\n", stdout);
 	return (1);
 }
