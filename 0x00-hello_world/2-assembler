@@ -1,2 +1,2 @@
 #!/bin/bash
-export CFILE="0" | gcc -s $CFILE
+export CFILE="0" | gccc -S $CFILE
