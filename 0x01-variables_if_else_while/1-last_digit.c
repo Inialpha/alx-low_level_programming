@@ -17,7 +17,7 @@ int main(void)
 	lastdigit = n % 10;
 
 	if (lastdigit == 0)
-	{i
+	{
 		printf("Last digit of %d is %d and is 0", n, lastdigit);
 	}
 
