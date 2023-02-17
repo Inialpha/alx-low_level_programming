@@ -8,7 +8,8 @@
 int main()
 {
 	int num1;
-	for (num1 = 0; num1 <= 99; n++)
+
+	for (num1 = 0; num1 <= 99; num1++)
 	{
 		putchar('0' + num1 / 10);
 		putchar('0' + num1 % 10);
