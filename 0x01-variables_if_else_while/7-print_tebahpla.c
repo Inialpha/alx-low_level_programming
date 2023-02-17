@@ -14,7 +14,7 @@ int main(void)
 	while (letter >= last)
 	{
 		putchar(letter);
-		letter++;
+		letter--;
 	}
 
 	putchar('\n');
