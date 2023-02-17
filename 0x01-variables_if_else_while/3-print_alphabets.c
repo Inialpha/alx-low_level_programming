@@ -17,7 +17,7 @@ int main(void)
 		letter++;
 	}
 
-	while (capsletter = <= 'Z')
+	while (capsletter <= 'Z')
 	{
 		putchar(capsletter);
 		capsletter++;
