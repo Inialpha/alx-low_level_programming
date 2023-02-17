@@ -11,17 +11,18 @@ int main(void)
 	char letter = 'a';
 	char capsletter = 'A';
 
-	while (letter <= z)
+	while (letter <= 'z')
 	{
 		putchar(letter);
 		letter++;
 	}
 
-	while (capsletter = <= Z)
+	while (capsletter = <= 'Z')
 	{
 		putchar(capsletter);
 		capsletter++;
 	}
 
 	putchar('\n');
+	return (0);
 }
