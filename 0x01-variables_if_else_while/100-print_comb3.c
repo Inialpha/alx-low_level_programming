@@ -13,7 +13,7 @@ int main()
 	{
 		putchar('0' + num1 / 10);
 		putchar('0' + num1 % 10);
-		putchar(,);
+		putchar(',');
 		putchar(' ');
 	}
 	return (0);
