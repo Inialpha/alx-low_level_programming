@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
+#include <stdio.h>
 /**
  * main - Entry point
  *
@@ -8,7 +9,7 @@
 
 int main(void)
 {
-	int lastdigit
+	int lastdigit;
 	int n;
 
 	srand(time(0));
@@ -16,7 +17,7 @@ int main(void)
 	lastdigit = n % 10;
 
 	if (lastdigit == 0)
-	{
+	{i
 		printf("Last digit of %d is %d and is 0", n, lastdigit);
 	}
 
