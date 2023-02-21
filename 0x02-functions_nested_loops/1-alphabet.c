@@ -1,21 +1,19 @@
 #include "main.h"
 
 /**
- * main - print _putchar and a new line
+ * print_alphabet - print _putchar and a new line
  *
  * Return: 0 (success)
  */
 
-int main(void)
+void print_alphabet(void)
 {
-	_putchar('_');
-	_putchar('p');
-	_putchar('u');
-	_putchar('t');
-	_putchar('c');
-	_putchar('h');
-	_putchar('a');
-	_putchar('r');
+	char letter;
+
+	for (letter = 'a'; letter <= 'z'; letter++)
+	{
+		_putchar(letter);
+	}
 	_putchar('\n');
 
 	return (0);
