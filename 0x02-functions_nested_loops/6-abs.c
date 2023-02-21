@@ -2,6 +2,8 @@
 
 /**
  * _abs - cputes absolute value of a number
+ * Return: n or -n
+ * @n: number to be checked
  */
 
 int _abs(int n)
