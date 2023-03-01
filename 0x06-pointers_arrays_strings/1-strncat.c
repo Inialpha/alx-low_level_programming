@@ -5,6 +5,7 @@
  * @dest: string1
  * @src: string2
  * @n: lenght of string
+ * Return: char
  */
 
 char *_strncat(char *dest, char *src, int n)
