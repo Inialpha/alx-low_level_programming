@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _memset - function memset 
+ * _memset - function memset
  * @s: string to be filled
  * @b: string to fill from
  * @n: num of bytes
