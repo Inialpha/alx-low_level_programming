@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 	int i, n, sum = 0;
 	char *flag;
 
+	(void)argc;
 	for (i = 1; argv[i]; i++)
 	{
 		n = strtol(argv[i], &flag, 10);
