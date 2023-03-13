@@ -1,7 +1,8 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * creat_array - creat an array
+ * create_array - creat an array
  * @size: size of the array
  * @c: the string
  * Return: a string
@@ -10,11 +11,11 @@
 char *create_array(unsigned int size, char c)
 {
 	unsigned int i;
-	int *array;
+	char *array;
 
 	array = malloc(sizeof(char) * size);
 
-	if (size == NULL)
+	if (size == 0)
 		return (NULL);
 
 	if (array == NULL)
