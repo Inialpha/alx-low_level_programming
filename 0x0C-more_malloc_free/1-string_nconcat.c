@@ -1,63 +1,46 @@
 #include "main.h"
 
 /**
- * string_nconcat - for concatenating strings
- * @s1: string 1
- * @s2: string 2
- * @n: size of string
- * Return: string
+ * string_nconcat - a function that concatenates two strings.
+ *
+ * @s1: first char
+ * @s2: secound char
+ * @n: unsigned int
+ *
+ * Return: If the function fails, it should return NULL
  */
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i, j;
-	unsigned int len1 = 0;
-	int _strlen = 0;
-	char *string;
-	unsigned int len2 = 0;
-
-	int c = 0;
+	unsigned int x, y, z;
+	char *s;
 
 	if (s1 == NULL)
-		len1 = 0;
+	{
+		x = 0;
+	}
 	else
 	{
-		while (s1[c] != '\0')
-		{
-			c++;
-			len1++;
-		}
+		for (x = 0; s1[x]; ++x)
+		;
 	}
-
-	c = 0;
 	if (s2 == NULL)
-		len2 = 0;
+	{
+		y = 0;
+	}
 	else
 	{
-		while (s2[c] != '\0')
-		{
-			c++;
-			len2++;
-		}
+		for (y = 0; s2[y]; ++y)
+		;
 	}
-	_strlen = len1 + len2;
-	
-	if (len2 > n)
-		len2 = n;
-
-
-	string = malloc((_strlen + 1) * sizeof(char));
-	if (string == NULL)
+	if (y > n)
+		y = n;
+	s = malloc(sizeof(char) * (x + y + 1));
+	if (s == NULL)
 		return (NULL);
-
-	for (i = 0; i < len1; i++)
-		string[i] = s1[i];
-
-
-	for (j = 0; j < len2; j++, i++)
-		string[i] = s2[j];
-
-	string[i] = '\0';
-
-	return (string);
+	for (z = 0; z < x; z++)
+		s[z] = s1[z];
+	for (z = 0; z < y; z++)
+		s[z + x] = s2[z];
+	s[x + y] = '\0';
+	return (s);
 }
