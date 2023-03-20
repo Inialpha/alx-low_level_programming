@@ -1,11 +1,19 @@
 #ifndef _DOG_H_
 #define _DOG_H_
 
+
+/**
+ * struct dog - dog class
+ * @name: dogs name
+ * @age: dogs age
+ * @owner: dogs owner
+ */
+
 struct dog
 {
-	char* name;
+	char *name;
 	float age;
-	char* owner;
+	char *owner;
 };
 
 typedef struct dog dog_t;
