@@ -1,1 +1,1 @@
-Varidic functions in c
+0x10. C - Variadic functions
