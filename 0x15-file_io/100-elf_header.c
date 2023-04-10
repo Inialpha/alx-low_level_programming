@@ -27,7 +27,7 @@ void entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_file(char *file)
 {
 	dprintf(STDERR_FILENO, "Error: can't read file %s\n", file);
-	exit (98);
+	exit(98);
 }
 
 /**
@@ -40,7 +40,7 @@ void close_elf(int elf)
 	if (close(elf) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: can't close file %d\n", elf);
-		exit (98);
+		exit(98);
 	}
 }
 
@@ -48,7 +48,7 @@ void close_elf(int elf)
  * main - Entry point
  * @argc: arg count
  * @argv: array of arguments
- * Return 0 on success
+ * Return: 0 on success
  */
 
 int main(int argc, char *argv[])
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 	open_file = open(argv[1], O_RDONLY);
 	if (open_file == -1)
 		close_file(argv[1]);
-	
+
 
 	head = malloc(sizeof(Elf64_Ehdr));
 	if (head == NULL)
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 		free(head);
 		close(open_file);
 		dprintf(STDERR_FILENO, "Error %s: No such file", argv[1]);
-		exit (98);
+		exit(98);
 	}
 	check_elf(head->e_ident);
 	printf("ELF Header:\n");
@@ -94,26 +94,32 @@ int main(int argc, char *argv[])
 	return (0);
 }
 
-/**                                                    * check_elf - check if file is an elf file            * @e_ident: pointer to file                           * Return: void                                        */
-                                                      void check_elf(unsigned char *e_ident)                {
-        int i;
+/**
+ * check_elf - check if file is an elf file
+ * @e_ident: pointer to file
+ * Return: void
+ */
 
-        for (i = 0; i < 4; i++)
-        {
-                if (e_ident[i] != 127 && e_ident[i]
-                                != 'E' && e_ident[i]
-                                != 'L' && e_ident[i]
-                                != 'F')
-                {
-                        dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
-                        exit(98);
+void check_elf(unsigned char *e_ident)
+{
+	int i;
+
+	for (i = 0; i < 4; i++)
+	{
+		if (e_ident[i] != 127 && e_ident[i]
+				!= 'E' && e_ident[i]
+				!= 'L' && e_ident[i]
+				!= 'F')
+		{
+			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
+			exit(98);
 		}
 	}
-						      }
+}
 
 /**
  * magic - print elf magic number
- * @e_ident
+ * @e_ident: e_ident elf file
  * Return: void
  */
 
@@ -125,7 +131,7 @@ void magic(unsigned char *e_ident)
 	for (i = 0; i < EI_NIDENT; i++)
 	{
 		printf("%02x", e_ident[i]);
-		if (i == EI_NIDENT -1)
+		if (i == EI_NIDENT - 1)
 			printf("\n");
 		else
 			printf(" ");
@@ -272,7 +278,7 @@ void abi(unsigned char *e_ident)
 /**
  * type - print the type of the elf file
  * @e_type: ELF type
- * e_ident: elf file containig the elf class
+ * @e_ident: elf file containig the elf class
  */
 
 
