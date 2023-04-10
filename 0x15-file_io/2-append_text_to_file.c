@@ -14,13 +14,13 @@ int append_text_to_file(const char *filename, char *text_content)
 		return (-1);
 
 	opf = open(filename, O_WRONLY | O_APPEND);
-	
+
 	for (i = 0; text_content[i] != '\0'; i++)
 		;
 	if (text_content != NULL)
 		wrt = write(opf, text_content, i);
 	close(opf);
-	
+
 	if (wrt == -1)
 		return (-1);
 
