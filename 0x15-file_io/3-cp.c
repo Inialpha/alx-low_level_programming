@@ -1,5 +1,6 @@
 #include "main.h"
-
+#include <stdio.h>
+#include <stdlib.h>
 /**
  * main - Etry point
  * @argc: argument count
@@ -9,7 +10,7 @@
 
 int main(int argc, char *argv[])
 {
-	int open_from, open_to;
+	int open_from, open_to, cf, ct;
 	ssize_t rd, wrt;
 	char *buffer[1024];
 	mode_t perm;
@@ -27,7 +28,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	perm = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-	open_to = open(argv[2], O_CREATE | O_WRONLY | O_TRUNC, perm);
+	open_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, perm);
 
 	if (open_to == -1)
 	{
@@ -49,7 +50,7 @@ int main(int argc, char *argv[])
 		wrt = write(open_to, buffer, wrt);
 		if (wrt == -1)
 		{
-			dprintf(STDERR, "Error can't write to %s\n", argv[2]);
+			dprintf(STDERR_FILENO, "Error can't write to %s\n", argv[2]);
 			if (open_from == -1)
 				close(open_from);
 			if (open_to == -1)
