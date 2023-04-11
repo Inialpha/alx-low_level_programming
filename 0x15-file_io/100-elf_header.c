@@ -174,7 +174,7 @@ void class(unsigned char *e_ident)
 
 void data(unsigned char *e_ident)
 {
-	printf("  Data:                             ");
+	printf("  Data:                              ");
 
 	switch (e_ident[EI_DATA])
 	{
