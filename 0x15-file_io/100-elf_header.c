@@ -147,8 +147,7 @@ void magic(unsigned char *e_ident)
 
 void class(unsigned char *e_ident)
 {
-	printf("  Class:   ");
-
+	printf("  Class:                             ");
 	switch (e_ident[EI_CLASS])
 	{
 		case ELFCLASSNONE:
@@ -175,7 +174,7 @@ void class(unsigned char *e_ident)
 
 void data(unsigned char *e_ident)
 {
-	printf("  Data:   ");
+	printf("  Data:                             ");
 
 	switch (e_ident[EI_DATA])
 	{
