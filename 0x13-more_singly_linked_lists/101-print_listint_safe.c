@@ -3,52 +3,101 @@
 #include <stdio.h>
 
 /**
- * print_listint_safe - prints a listint_t linked list and returns
- * the number of nodes in the list. If the list has a loop, it prints
- * the nodes up to the point where the loop starts and returns the
- * number of nodes up to that point.
- *
- * @head: pointer to the start of the list
- *
- * Return: the number of nodes in the list up to the point where
- * the loop starts, or the total number of nodes in the list if it
- * doesn't have a loop.
+ * check_loop - checks if there is a loop in list
+ * @head: headnof linked list
+ * Return: a pointer to the begining of loop
  */
-size_t print_listint_safe(const listint_t *head)
+
+listint_t *check_loop(const listint_t *head)
 {
-	size_t i, num = 0;
-	const listint_t *list[100];
+	const listint_t *tortise, *hare;
 
-	while (head != NULL)
+	tortise = hare = head;
+
+	while (hare != NULL && hare->next != NULL)
 	{
-/* check if the current node is already in the list */
-		for (i = 0; i < num; i++)
-		{
-			if (head == list[i])
-			{
-/* loop detected, print the nodes up to this point */
-				printf("-> [%p] %d\n", (void *)head, head->n);
-				return (num);
-
-			}
-		}
-
-	/* add the current node to the list */
-		num++;
-
-		if (list == NULL)
-		{
-			exit(98);
-		}
-		list[num - 1] = head;
-
-		/* print the current node */
-		printf("[%p] %d\n", (void *)head, head->n);
-		/* move to the next node */
-		head = head->next;
+		tortise = tortise->next;
+		hare = hare->next->next;
+		if (tortise == hare)
+			break;
 	}
+	if (hare == NULL)
+		return (NULL);
 
-/* no loop detected, print the total number of nodes */
+	tortise = head;
+	while (hare != tortise)
+	{
+		tortise = tortise->next;
+		hare = hare->next;
+	}
+	return ((listint_t *)tortise);
+}
+
+
+/**
+ * normal_print - print a linked list without a loop
+ * @head: pointer to the bigining of the list
+ * Return: the number ofmodes in the list
+ */
+
+int normal_print(const listint_t *head)
+{
+	const listint_t *temp = head;
+	int num = 0;
+
+	for (; temp != NULL; temp = temp->next)
+	{
+		printf("[%p] %d\n", (void *)temp, temp->n);
+		num++;
+	}
 	return (num);
 }
 
+/**
+ * print_loop - prints a LL that contains a loop
+ * @tortise: the begining of the loop
+ * @head: begining of loop
+ * Return: the number of nodes printed
+ */
+
+int print_loop(const listint_t *tortise, const listint_t *head)
+{
+	const listint_t *temp = head;
+	int num = 0;
+
+	while (temp != tortise)
+	{
+		printf("[%p] %d\n", (void *)temp, temp->n);
+		num++;
+		temp = temp->next;
+	}
+
+	do {
+		printf("[%p] %d\n", (void *)temp, temp->n);
+		num++;
+		temp = temp->next;
+	} while (temp != tortise);
+	printf("-> [%p] %d\n", (void *)tortise, tortise->n);
+	return (num);
+}
+
+
+/**
+ * print_listint_safe - prints a LL with a loop
+ * @head: pointer to the begining of the list
+ * Return: the number of nodes
+ */
+
+size_t print_listint_safe(const listint_t *head)
+{
+	const listint_t *loop;
+	size_t num;
+
+	loop = check_loop(head);
+	if (loop)
+		num = print_loop(loop, head);
+	else
+		num = normal_print(head);
+
+	return (num);
+}
