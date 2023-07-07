@@ -148,3 +148,34 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	add_sorted(new_node, ht);
 	return (1);
 }
+
+/**
+ * shash_table_get - get a value from a sorted hash table
+ * @ht: hash table
+ * @key: key string
+ * Return: the corresponding
+ */
+
+char *shash_table_get(const shash_table_t *ht, const char *key)
+{
+	unsigned long int idx;
+	shash_node_t *temp;
+
+	if (ht == NULL || key == NULL || strlen(key) == 0 || ht->size == 0
+			|| ht->array == NULL)
+		return (NULL);
+
+	idx = key_index((const unsigned char *)key, ht->size);
+
+	temp = ht->array[idx];
+	while (temp)
+	{
+		if (strcmp(temp->key, key) == 0)
+			return (temp->value);
+		temp = temp->next;
+	}
+
+	return (NULL);
+}
+
+
