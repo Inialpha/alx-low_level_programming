@@ -45,7 +45,7 @@ shash_node_t *screat_node(const char *key, const char *value)
 	if (new_node == NULL)
 		return (NULL);
 	new_node->next = NULL;
-	new_node->sprev = NULL;
+	new_node->snext = NULL;
 	new_node->sprev = NULL;
 
 	new_node->value = strdup(value);
@@ -178,4 +178,83 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	return (NULL);
 }
 
+/**
+ * shash_table_print - prints the contain of an hash table
+ * @ht: hash table
+ */
+
+void shash_table_print(const shash_table_t *ht)
+{
+	shash_node_t *temp;
+	int flag = 0;
+
+	if (ht == NULL || ht->size == 0 || ht->array == NULL)
+		return;
+	temp = ht->shead;
+	printf("{");
+	while (temp)
+	{
+		if (flag == 1)
+			printf(", ");
+		printf("'%s': '%s'", temp->key, temp->value);
+		flag = 1;
+		temp = temp->snext;
+	}
+	printf("}\n");
+}
+
+
+/**
+ * shash_table_print_rev - prints the contain of a hash table in reverse order
+ * @ht: hash table
+ */
+
+void shash_table_print_rev(const shash_table_t *ht)
+{
+	shash_node_t *temp;
+	int flag;
+
+	if (ht == NULL || ht->array == NULL)
+		return;
+
+	temp = ht->stail;
+	printf("{");
+	flag = 0;
+	while (temp)
+	{
+		if (flag == 1)
+			printf(", ");
+		printf("'%s': '%s'", temp->key, temp->value);
+		flag = 1;
+		temp = temp->sprev;
+	}
+	printf("}\n");
+}
+
+
+/**
+ * shash_table_delete - deletes the conain of a hash table
+ * @ht: hash table
+ */
+
+void shash_table_delete(shash_table_t *ht)
+{
+	shash_node_t *temp;
+	shash_node_t *next;
+
+	if (ht == NULL || ht->size == 0 || ht->array == NULL)
+		return;
+
+	temp = ht->shead;
+	while (temp)
+	{
+		next = temp->snext;
+		free(temp->value);
+		free(temp->key);
+		free(temp);
+		temp = next;
+	}
+	free(ht->array);
+	free(ht);
+}
 
