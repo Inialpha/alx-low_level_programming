@@ -15,12 +15,25 @@ def island_perimeter(grid):
                 if i != 0:
                     if grid[i - 1][j] == 1:
                         para -= 1
+                if i < ln - 1:
                     if grid[i + 1][j] == 1:
                         para -= 1
+                if j > 0:
                     if grid[i][j - 1] == 1:
                         para -= 1
+                if j < row_len - 1:
                     if grid[i][j + 1] == 1:
                         para -= 1
             j += 1
         i += 1
     return para
+
+if __name__ == "__main__":
+    grid = [
+        [0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+    ]
+    print(island_perimeter(grid))
