@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """calaculates island parameter"""
 
+
 def island_perimeter(grid):
     """returns the perimeter of the island described in grid:"""
     i = 0
@@ -27,13 +28,3 @@ def island_perimeter(grid):
             j += 1
         i += 1
     return para
-
-if __name__ == "__main__":
-    grid = [
-        [0, 0, 0, 0, 0, 0],
-        [0, 1, 0, 0, 0, 0],
-        [0, 1, 0, 0, 0, 0],
-        [0, 1, 1, 1, 0, 0],
-        [0, 0, 0, 0, 0, 0]
-    ]
-    print(island_perimeter(grid))
